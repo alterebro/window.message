@@ -1,11 +1,11 @@
 /* -------------------------------------------------------------------------------------------- //
-// jQuery.Console.js
+// jQuery.Window-message.js
 // -------------------------------------------------------------------------------------------- //
 // This is a simple window.alert replacement using jQuery. By Jorge Moreno - @alterebro
 // Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
 // -------------------------------------------------------------------------------------------- */
 
-$.Console =  {
+$.Window =  {
 	element : 'terminal-output',
 	defaultHeight : 150,
 	_construct : function() {
@@ -91,7 +91,7 @@ $.Console =  {
 	_destruct : function(element) {
 		$('#'+element).hide();
 	},
-	output : function(str) {
+	message : function(str) {
 		var element = '#'+this.element;
 		if ( $(element).length == 0 ) {
 			this._construct();
@@ -104,8 +104,7 @@ $.Console =  {
 				'border-bottom' : 'dotted rgba(255, 255, 255, .25) 1px'
 			})
 			.html(str)
-			.prependTo(element)
-			.typewriter();
+			.prependTo(element);
 	}
-
+    
 };
