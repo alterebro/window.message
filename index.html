@@ -3,6 +3,42 @@
 <head>
     <meta charset="utf-8" />
     <title>window.message()</title>
+<style>
+html, body {
+    background: #eee;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: sans-serif;
+    line-height: 1.6;
+}
+body {
+    width: 90%;
+    max-width: 640px;
+    margin: 0 auto;
+}
+code {
+    background: #555;
+    color: #ccc;
+    padding: 4px 10px;
+    border-radius: 3px;
+}
+input, button {
+    font-size: 100%;
+}
+li {
+    padding: 0 0 10px 0;
+}
+a {
+    color: #069;
+    text-decoration: none;
+}
+a:hover {
+    color: #000;
+    border-bottom: solid #069 1px;
+}
+</style>
 </head>
 <body>
     <h1>window.message()</h1>
@@ -11,10 +47,59 @@
         <br /><code>console.log</code> and <code>window.alert</code> alternative to display messages in case you want them to be seen within the document.
     </p>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.window-message.js"></script>
+    <hr />
+
+    <h2>Plain JavaScript implementation</h2>
+    <ol>
+        <li>
+            Include the <code>window-message.js</code> file within your source code.
+            <br /><code>&lt;script type="text/javascript" src="window-message.js"&gt;&lt;/script&gt;</code>
+        </li>
+        <li>
+            Send messages to the window simple by calling the function:
+            <br /><code>message('your message goes here');</code>
+        </li>
+    </ol>
+
+    <h3>Example</h3>
+    <ul>
+        <li>
+            Send a <code>'hello world'</code> message to the output message window : <button type="button" id="button-test-01">Hello World!</button>
+        </li>
+        <li>
+            Send an arbitrary message : <input type="text" id="input-test-02" placeholder="your message here..." /><button type="button" id="button-test-02">Send</button>
+        </li>
+        <li>
+            <button type="button" id="button-test-03">Click to output a bunch of stuff</button>
+        </li>
+    </ul>
+
+    <hr />
+
+    <p>
+        <a href="https://github.com/alterebro/window.message">window.message</a> &bull; by : <a href="https://twitter.com/alterebro">@alterebro</a>
+    </p>
+
+<script type="text/javascript" src="window-message.min.js"></script>
 <script type="text/javascript">
-$.Window.message('Hello World!');
+document.querySelector('#button-test-01').onclick = function() {
+    message('Hello World!');
+}
+document.querySelector('#button-test-02').onclick = function() {
+    var val = document.querySelector('#input-test-02').value;
+        val = (val == '') ? 'no input message!!' : val;
+    message(val);
+}
+document.querySelector('#button-test-03').onclick = function() {
+    var n = [];
+    for ( var i in navigator ) { n.push(i +' : '+ navigator[i]); }
+    function nn(i) {
+        message(n[i]);
+        if ( i < n.length-1 ) { setTimeout(function(){ nn(i+1) }, 200); }
+    }
+    nn(0);
+}
+
 </script>
 </body>
 </html>
