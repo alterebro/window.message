@@ -1,84 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>window.message()</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Window Message : window.message();</title>
+    <meta name="description" content="Simple console.log and window.alert message display replacement both implemented as jQuery plugin and plain vanilla JavaScript." />
+	<meta name="author" content="Jorge Moreno aka moro, moro.es (@alterebro)" />
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta name="robots" content="index, follow" />
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/alterebro/armazon.css/v0.3.1/armazon/armazon.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" />
 <style>
-html, body {
-    background: #eee;
-    color: #222;
-    margin: 0;
-    padding: 0;
-    border: none;
-    font-family: sans-serif;
-    line-height: 1.6;
-}
 body {
-    width: 90%;
-    max-width: 640px;
-    margin: 0 auto;
+	width: 90%;
+	max-width: 720px;
+	margin: 3rem auto;
+    font-family: 'Roboto';
 }
-code {
-    background: #555;
-    color: #ccc;
-    padding: 4px 10px;
-    border-radius: 3px;
-}
-input, button {
-    font-size: 100%;
-}
-li {
-    padding: 0 0 10px 0;
-}
-a {
-    color: #069;
-    text-decoration: none;
-}
-a:hover {
-    color: #000;
-    border-bottom: solid #069 1px;
+footer p {
+    text-align: center;
+    font-size: 80%;
+    margin: 0 0 40px 0;
 }
 </style>
 </head>
 <body>
-    <h1>window.message()</h1>
+
+<header>
+    <h1>window.<strong>message</strong>()</h1>
     <p>
         Simple window.alert() replacement both as jQuery plugin and Vanilla JavaScript implementation.
         <br /><code>console.log</code> and <code>window.alert</code> alternative to display messages in case you want them to be seen within the document.
     </p>
-
     <hr />
-
-    <h2>Plain JavaScript implementation</h2>
+</header>
+<main>
+    <h2>Plain JavaScript implementation : </h2>
     <ol>
         <li>
             Include the <code>window-message.js</code> file within your source code.
             <br /><code>&lt;script type="text/javascript" src="window-message.js"&gt;&lt;/script&gt;</code>
         </li>
         <li>
-            Send messages to the window simple by calling the function:
+            Send messages to the window simply by calling the function:
             <br /><code>message('your message goes here');</code>
         </li>
     </ol>
 
-    <h3>Example</h3>
-    <ul>
+    <h3>Usage Examples : </h3>
+    <ol>
         <li>
-            Send a <code>'hello world'</code> message to the output message window : <button type="button" id="button-test-01">Hello World!</button>
+            <p>
+                'Hello World' Message
+            </p>
+            <p><pre><code>message('Hello World!');</code></pre></p>
+            <p>
+                <label for="button-test-01">Send a <code>'hello world'</code> message to the output message window :</label>
+                <br />
+                <button type="button" id="button-test-01">Hello World!</button>
+            </p>
         </li>
         <li>
-            Send an arbitrary message : <input type="text" id="input-test-02" placeholder="your message here..." /><button type="button" id="button-test-02">Send</button>
-        </li>
-        <li>
-            <button type="button" id="button-test-03">Click to output a bunch of stuff</button>
-        </li>
-    </ul>
 
+            <p>
+                Arbitrary Message
+            </p>
+            <p><pre><code>var val = document.querySelector('#input-test-02').value;
+    val = (val == '') ? 'no input message!!' : val;
+    message(val);</code></pre></p>
+            <p>
+                <label for="input-test-02">Send an arbitrary message :</label>
+                <input type="text" id="input-test-02" placeholder="your message here..." />
+                <button type="button" id="button-test-02">Send</button>
+            </p>
+        </li>
+        <li>
+            <p>
+                Multiple Messaging
+            </p>
+            <p><pre><code>var n = [];
+    for ( var i in navigator ) { n.push(i +' : '+ navigator[i]); }
+    function nn(i) {
+        message(n[i]);
+        if ( i < n.length-1 ) { setTimeout(function(){ nn(i+1) }, 200); }
+    }
+    nn(0);</code></pre></p>
+            <p>
+                <button type="button" id="button-test-03">Click to output a bunch of stuff</button>
+            </p>
+        </li>
+    </ol>
+</main>
+
+<footer>
     <hr />
-
     <p>
-        <a href="https://github.com/alterebro/window.message">window.message</a> &bull; by : <a href="https://twitter.com/alterebro">@alterebro</a>
+        <a href="https://github.com/alterebro/window.message" title="Window Message - Code Repository">window.message</a> &bull;
+        by : <strong><a href="https://twitter.com/alterebro" title="Jorge Moreno. Front End Web Developer and UI Designer">@alterebro</a></strong>
     </p>
+</footer>
 
 <script type="text/javascript" src="window-message.min.js"></script>
 <script type="text/javascript">
@@ -99,7 +124,6 @@ document.querySelector('#button-test-03').onclick = function() {
     }
     nn(0);
 }
-
 </script>
 </body>
 </html>
